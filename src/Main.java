@@ -18,7 +18,6 @@ public void start(Stage primaryStage) throws Exception{
         Image spriteSheet2 = new Image("space2.png");
         ImageView sprite1 = new ImageView(spriteSheet);
         ImageView sprite2 = new ImageView(spriteSheet2);
-        ArrayList <ImageView> sprites= new ArrayList<ImageView>();
         sprite1.setImage(spriteSheet);
         sprite1.setX(-800);
         sprite1.setY(0);
