@@ -16,17 +16,20 @@ public void start(Stage primaryStage) throws Exception{
         Image spriteSheet2 = new Image("space2.png");
         ImageView sprite1 = new ImageView(spriteSheet);
         ImageView sprite2 = new ImageView(spriteSheet2);
-        sprite1.setImage(spriteSheet);
+
         sprite1.setX(-800);
         sprite1.setY(0);
 
-        sprite2.setImage(spriteSheet2);
         sprite2.setX(800);
         sprite2.setY(0);
 
         Group root = new Group(sprite1,sprite2);
         Pane pane = new Pane(root);
-        Scene theScene = new Scene(pane, 1600, 600,true);
+        GameScene theScene = new GameScene(pane, 1600, 600,true);
+
+        root.getChildren().add(GameScene.getBackground_l().getImage());
+        root.getChildren().add(GameScene.getBackground_r().getImage());
+
         primaryStage.setScene(theScene);
         primaryStage.show();
         }
