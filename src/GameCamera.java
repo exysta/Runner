@@ -1,11 +1,12 @@
-public class Camera {
+public class GameCamera {
     public int x;
     public int y;
 
-    public Camera(int x, int y) {
+    public GameCamera(int x, int y) {
         this.x = x;
         this.y = y;
     }
+
     public int getX() {
         return x;
     }
@@ -13,8 +14,9 @@ public class Camera {
     public int getY() {
         return y;
     }
+
     @Override
     public String toString(){
-        return "x:"+this.x+",y:"+this.y;
+        return this.x+","+this.y;
     }
 }
