@@ -26,7 +26,9 @@ public void start(Stage primaryStage) throws Exception{
         Pane pane = new Pane(root);
         GameScene theScene = new GameScene(pane, 1600, 600,true,0,0,40,40,1400,0);
 
-        root.getChildren().add(GameScene.getBackground_l().getImage());
+        root.getChildren().add(GameScene.getHeart1().getImage());
+        root.getChildren().add(GameScene.getHeart2().getImage());
+        root.getChildren().add(GameScene.getHeart3().getImage());
         root.getChildren().add(GameScene.getBackground_r().getImage());
 
         primaryStage.setScene(theScene);
