@@ -26,7 +26,7 @@ public void start(Stage primaryStage) throws Exception{
 
         Path path = new Path();
         Group root = new Group(sprite1,sprite2);
-        Group Hero = new Group(spritehero)
+        Group Hero = new Group(spritehero);
         Pane pane = new Pane(root,Hero);
         GameScene theScene = new GameScene(pane, 1600, 600,true,0,0,40,40,1400,0);
 
