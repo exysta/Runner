@@ -29,7 +29,7 @@ public abstract class AnimatedThings {
         this.max_index = max_index;
         this.window_size = window_size;
         animation = new ImageView(new Image(fileName));
-        animation.setViewport(new Rectangle2D(window_size.get(0)+50,window_size.get(0)+window_size.get(1)/2,65,200));
+        animation.setViewport(new Rectangle2D(window_size.get(0)+50,window_size.get(0)+window_size.get(1)/2,65,100));
         animation.setX(x_animation);
         animation.setY(y_animation);
 
