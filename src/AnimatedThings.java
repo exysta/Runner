@@ -30,7 +30,6 @@ public  class AnimatedThings {
         this.window_size = new int[]{800, 600};
         this.animation = new ImageView(new Image(fileName));
 
-
     }
 
     public ImageView getAnimation() {

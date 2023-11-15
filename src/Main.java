@@ -12,27 +12,24 @@ public class Main extends Application {
         @Override
 public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Runner");
-        Image spriteSheet = new Image("Ressources\\space.png");
-        Image herosheet = new Image("Ressources\\heros.png");
-        Image spriteSheet2 = new Image("Ressources\\space2.png");
+        Image spriteSheet = new Image("Ressources/space.png");
+        Image spriteSheet2 = new Image("Ressources/space2.png");
         ImageView sprite1 = new ImageView(spriteSheet);
         ImageView sprite2 = new ImageView(spriteSheet2);
-        ImageView spritehero = new ImageView(herosheet);
-        sprite1.setX(-800);
+        sprite1.setX(0);
         sprite1.setY(0);
 
-        sprite2.setX(800);
+        sprite2.setX(1600);
         sprite2.setY(0);
 
         Path path = new Path();
         Group root = new Group(sprite1,sprite2);
-        Group HeroGroup = new Group(spritehero);
+        Group HeroGroup = new Group();
         Pane pane = new Pane(root,HeroGroup);
         GameScene theScene = new GameScene(pane,0,0,40,40,1400,0);
 
-        root.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getBackground_r().getImage(),spritehero);
-
-        //HeroGroup.getChildren().add(spritehero);
+        root.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getBackground_r().getImage());
+        HeroGroup.getChildren().add(GameScene.getHero().getAnimation());
         primaryStage.setScene(theScene);
         primaryStage.show();
         }
