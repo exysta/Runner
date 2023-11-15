@@ -18,7 +18,7 @@ public  class AnimatedThings {
     public final int[] window_size;
 
     public AnimatedThings(double x_animation, double y_animation, int attitude,
-                           int index, int max_index
+                           int index
                           ,String fileName) {
         this.x_animation = x_animation;
         this.y_animation = y_animation;
@@ -26,7 +26,7 @@ public  class AnimatedThings {
         this.frame_duration = Duration.ofMillis(500);
         this.frame_offset = 0;
         this.index = index;
-        this.max_index = max_index;
+        this.max_index = 6;
         this.window_size = new int[]{800, 600};
         this.animation = new ImageView(new Image(fileName));
 
