@@ -43,6 +43,7 @@ public class GameScene extends Scene {
                 //camera.update(time);
                 //gameScene.update(time);
                 long seconds = elapsedTime / 1_000_000_000;
+
                 timerLabel.setText("Timer: " + seconds);            }
         };
         timer.start();
