@@ -11,10 +11,10 @@ public class Main extends Application {
 //https://zetcode.com/gui/javafx/animation/
         @Override
 public void start(Stage primaryStage) throws Exception{
-        primaryStage.setTitle("Hello world");
-        Image spriteSheet = new Image("space.png");
-        Image herosheet = new Image("heros.png");
-        Image spriteSheet2 = new Image("space2.png");
+        primaryStage.setTitle("Runner");
+        Image spriteSheet = new Image("Ressources\\space.png");
+        Image herosheet = new Image("Ressources\\heros.png");
+        Image spriteSheet2 = new Image("Ressources\\space2.png");
         ImageView sprite1 = new ImageView(spriteSheet);
         ImageView sprite2 = new ImageView(spriteSheet2);
         ImageView spritehero = new ImageView(herosheet);
@@ -28,14 +28,11 @@ public void start(Stage primaryStage) throws Exception{
         Group root = new Group(sprite1,sprite2);
         Group HeroGroup = new Group(spritehero);
         Pane pane = new Pane(root,HeroGroup);
-        GameScene theScene = new GameScene(pane, 1600, 600,true,0,0,40,40,1400,0);
+        GameScene theScene = new GameScene(pane,0,0,40,40,1400,0);
 
-        root.getChildren().add(GameScene.getHeart1().getImage());
-        root.getChildren().add(GameScene.getHeart2().getImage());
-        root.getChildren().add(GameScene.getHeart3().getImage());
-        root.getChildren().add(GameScene.getBackground_r().getImage());
-        root.getChildren().add(spritehero);
+        root.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getBackground_r().getImage(),spritehero);
 
+        //HeroGroup.getChildren().add(spritehero);
         primaryStage.setScene(theScene);
         primaryStage.show();
         }
