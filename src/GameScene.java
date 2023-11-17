@@ -19,11 +19,12 @@ public class GameScene extends Scene {
     public AnimationTimer timer;
     public int numberOfLives;
     private long lastTime;
+    private long previousTime;
 
     public GameScene(Parent parent,int camX,int camY,double b_l_X,double b_l_Y,double b_r_X,double b_r_Y){
         super(parent,1600, 600, true);
         lives = new StaticThing[] {new StaticThing("Ressources/heart.png",b_l_X,b_l_Y),new StaticThing("Ressources/heart.png",b_l_X+30,b_l_Y),new StaticThing("Ressources/heart.png",b_l_X+60,b_l_Y)};
-        hero = new Hero(400,495,0,5);
+        hero = new Hero(400,495,0,0);
         background_r = new StaticThing("Ressources/Score.png",b_r_X,b_r_Y);
         cam=new GameCamera(camX,camY);
         this.numberOfLives=3;
@@ -36,14 +37,19 @@ public class GameScene extends Scene {
             public void handle(long now) {
                 if (lastTime == 0) {
                     lastTime = now;
+                    previousTime =now;
                 }
                 long elapsedTime = now - lastTime;
 
-                //hero.update(hero);
-                //camera.update(time);
-                //gameScene.update(time);
-                long seconds = elapsedTime / 1_000_000_000;
+                if ((now-previousTime)/1_000_000_00 >=1) {
+                    hero.update();
+                    //camera.update(time);
+                    //gameScene.update(time);
 
+                    previousTime = now;
+                }
+
+                long seconds = elapsedTime / 1_000_000_000;
                 timerLabel.setText("Timer: " + seconds);            }
         };
         timer.start();

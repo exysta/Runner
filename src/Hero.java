@@ -12,23 +12,59 @@ public class Hero extends AnimatedThings {
         this.animation.setX(x_animation);
         this.animation.setY(y_animation);
     }
-    public Hero update(Hero hero){
-        if ((hero.attitude%2== 0)){
-            if (hero.index < 5) {
-                hero.index += 1;
+    public  void update(){
+        if ((this.attitude%2== 0)){ //les lignes du spritesheet avec 6 sprites d'animation
+            if (this.index < 5) {
+                this.index += 1;
+                this.animation.setViewport(new Rectangle2D( index * 85,attitude*150,80,100));
+                if(x_animation>=1600){
+                    x_animation=0;
+                }
+                else {
+                    x_animation += 15;
+                }
+                this.animation.setX(x_animation);
+
             }
             else{
-                hero.index = 0;
+                this.index = 0;
+                this.animation.setViewport(new Rectangle2D( index * 85,attitude*150,80,100));
+                if(x_animation>=1600){
+                    x_animation=0;
+                }
+                else {
+                    x_animation += 15;
+                }
+                this.animation.setX(x_animation);
+
             }
         }
-        if ((hero.attitude%2== 1)){
-            if (hero.index < 1) {
-                hero.index += 1;
+        if ((this.attitude%2== 1)){
+            if (this.index < 1) {
+                this.index += 1;
+                this.animation.setViewport(new Rectangle2D( index * 85,attitude*150,80,100));
+                if(x_animation>=1600){
+                    x_animation=0;
+                }
+                else {
+                    x_animation += 15;
+                }
+                this.animation.setX(x_animation);
+
             }
             else{
-                hero.index = 0;
+                this.index = 0;
+                this.animation.setViewport(new Rectangle2D( index * 85,attitude*150,80,100));
+                if(x_animation>=1600){
+                    x_animation=0;
+                }
+                else {
+                    x_animation += 15;
+                }
+                this.animation.setX(x_animation);
+
             }
         }
-        return hero;
     }
+
 }
