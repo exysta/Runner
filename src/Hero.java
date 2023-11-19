@@ -18,10 +18,10 @@ public class Hero extends AnimatedThings {
                 this.index += 1;
                 this.animation.setViewport(new Rectangle2D( index * 85,attitude*150,80,100));
                 if(x_animation>=1600){
-                    x_animation=0;
+                    //x_animation=0;
                 }
                 else {
-                    x_animation += 15;
+                    //x_animation += 15;
                 }
                 this.animation.setX(x_animation);
 
@@ -30,10 +30,10 @@ public class Hero extends AnimatedThings {
                 this.index = 0;
                 this.animation.setViewport(new Rectangle2D( index * 85,attitude*150,80,100));
                 if(x_animation>=1600){
-                    x_animation=0;
+                    //x_animation=0;
                 }
                 else {
-                    x_animation += 15;
+                    //x_animation += 15;
                 }
                 this.animation.setX(x_animation);
 
@@ -44,10 +44,10 @@ public class Hero extends AnimatedThings {
                 this.index += 1;
                 this.animation.setViewport(new Rectangle2D( index * 85,attitude*150,80,100));
                 if(x_animation>=1600){
-                    x_animation=0;
+                    //x_animation=0;
                 }
                 else {
-                    x_animation += 15;
+                    //x_animation += 15;
                 }
                 this.animation.setX(x_animation);
 
@@ -56,10 +56,10 @@ public class Hero extends AnimatedThings {
                 this.index = 0;
                 this.animation.setViewport(new Rectangle2D( index * 85,attitude*150,80,100));
                 if(x_animation>=1600){
-                    x_animation=0;
+                    //x_animation=0;
                 }
                 else {
-                    x_animation += 15;
+                    //x_animation += 15;
                 }
                 this.animation.setX(x_animation);
 

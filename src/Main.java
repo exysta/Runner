@@ -10,23 +10,26 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-//https://zetcode.com/gui/javafx/animation/
-        @Override
+    @Override
 public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Runner");
 
-        Space space = new Space();
-        Group landscape = space.Create_Space();
+        //Space space = new Space();
+        Group landscape = new Group();
         Group HeroGroup = new Group();
         Group Ui = new Group();
 
         Label test = new Label("coucou");
 
         Pane pane = new Pane(landscape,Ui,HeroGroup);
-        GameScene theScene = new GameScene(pane,0,0,40,40,1400,0);
+        GameScene theScene = new GameScene(pane,40,40,1400,0);
 
         Ui.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getTimerLabel(),test);
         HeroGroup.getChildren().add(GameScene.getHero().getAnimation());
+
+        landscape.getChildren().add(GameScene.getBackground());
+
+
 
         primaryStage.setScene(theScene);
         primaryStage.show();

@@ -17,4 +17,7 @@ public class Camera {
     public String toString(){
         return this.x+","+this.y;
     }
+    public void update(){
+        x += 5;
+    }
 }
