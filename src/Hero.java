@@ -57,7 +57,7 @@ public class Hero extends AnimatedThings {
         attitude = 1;
         index = 0;
         update();
-        y_animation += -100;
+        y_animation += -200;
         animation.setY(y_animation);
 
     }
@@ -69,7 +69,7 @@ public class Hero extends AnimatedThings {
 
     }    public void GravityUpdate(double deltatime){
         //adding gravity
-        double aY = 0.1;
+        double aY = 0.075;
 
         if((y_animation += vY * deltatime) > 490) {
             y_animation=490;
