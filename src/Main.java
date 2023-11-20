@@ -14,17 +14,14 @@ public class Main extends Application {
 public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Runner");
 
-        //Space space = new Space();
         Group landscape = new Group();
         Group HeroGroup = new Group();
         Group Ui = new Group();
 
-        Label test = new Label("coucou");
-
         Pane pane = new Pane(landscape,Ui,HeroGroup);
         GameScene theScene = new GameScene(pane,40,40,1400,0);
 
-        Ui.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getTimerLabel(),test);
+        Ui.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getTimerLabel());
         HeroGroup.getChildren().add(GameScene.getHero().getAnimation());
 
         landscape.getChildren().add(GameScene.getBackground());
