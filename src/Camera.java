@@ -4,7 +4,7 @@ public class Camera {
 
     public double XHero;
     public double YHero;
-    double vx = 1; // camera velocity
+    double vY = 0; // camera velocity
 
 
 
