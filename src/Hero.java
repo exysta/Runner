@@ -57,17 +57,22 @@ public class Hero extends AnimatedThings {
         attitude = 1;
         index = 0;
         update();
-        y_animation += -200;
+        y_animation += -150;
         animation.setY(y_animation);
 
     }
     public void fire(){
-        attitude = 2;
-        index = 0;
+        if(y_animation>=485) { // du moment que le héros n'est que légerement au dessus du sol il fait l'animation du tire normal
+            attitude = 2;
+            index = 0;
+        }
+        else{ //il fait l'animation de saut + tire s'il n'est pas au sol quand il tire
+            attitude = 3;
+            index = 0;
+        }
         update();
-        System.out.println(y_animation);
-
-    }    public void GravityUpdate(double deltatime){
+    }
+    public void GravityUpdate(double deltatime){
         //adding gravity
         double aY = 0.075;
 

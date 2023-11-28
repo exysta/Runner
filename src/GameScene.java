@@ -4,11 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 
-import java.time.Duration;
-import java.util.ArrayList;
 
 public class GameScene extends Scene {
     public static StaticThing[] lives;
@@ -23,6 +19,8 @@ public class GameScene extends Scene {
     public AnimationTimer timer_background;
     private Parent root;
 
+    public static MusicPlayer musicPlayer;
+
     public GameScene(Parent parent,double b_l_X,double b_l_Y,double b_r_X,double b_r_Y){
         super(parent,1600, 600, true);
         lives = new StaticThing[] {new StaticThing("Ressources/heart.png",b_l_X,b_l_Y),new StaticThing("Ressources/heart.png",b_l_X+30,b_l_Y),new StaticThing("Ressources/heart.png",b_l_X+60,b_l_Y)};
@@ -33,6 +31,10 @@ public class GameScene extends Scene {
         this.numberOfLives=3;
         timerLabel = new Label("Timer: 0");
         timerLabel.setStyle("-fx-font-size: 32pt; -fx-text-fill: red;");
+
+        musicPlayer = new MusicPlayer("Ressources/sound/Mercury.wav");
+
+
         // 1er timer pour l'animation du héro trigger 0.1 sec
         timer = new AnimationTimer() {
             private long lastTime = 0;
@@ -112,4 +114,7 @@ public class GameScene extends Scene {
         hero.animation.setY(hero.y_animation);
     }
 
+    public static MusicPlayer getMusicPlayer() {
+        return musicPlayer;
+    }
 }

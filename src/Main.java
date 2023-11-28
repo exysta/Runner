@@ -1,11 +1,10 @@
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Path;
+
+
 import javafx.stage.Stage;
 
 
@@ -17,13 +16,15 @@ public void start(Stage primaryStage) throws Exception{
         Group landscape = new Group();
         Group HeroGroup = new Group();
         Group Ui = new Group();
+        HBox Media = new HBox();
+        Media.setLayoutX(1475);
 
-        Pane pane = new Pane(landscape,Ui,HeroGroup);
+        Pane pane = new Pane(landscape,Ui,HeroGroup,Media);
         GameScene theScene = new GameScene(pane,40,40,1400,0);
 
         Ui.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getTimerLabel());
         HeroGroup.getChildren().add(GameScene.getHero().getAnimation());
-
+        Media.getChildren().addAll(GameScene.getMusicPlayer().getPlayButton(),GameScene.getMusicPlayer().getPauseButton(),GameScene.getMusicPlayer().getStopButton());
         landscape.getChildren().add(GameScene.getBackground());
 
 
