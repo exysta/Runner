@@ -45,7 +45,7 @@ public class Alien extends AnimatedThings {
             else{
                 this.index = 0;
             }
-            this.animation.setViewport(new Rectangle2D( index * 84,attitude*165,80,100));
+            this.animation.setViewport(new Rectangle2D( 1+index * 30,10+attitude*50,80,100));
 
         }
         if ((this.attitude== 1)){ //alien meurt
