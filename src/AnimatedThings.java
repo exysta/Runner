@@ -15,7 +15,6 @@ public  class AnimatedThings {
 
     public int index;
     public final int max_index;
-    public final int[] window_size;
 
     public AnimatedThings(double x_animation, double y_animation, int attitude,
                            int index
@@ -27,7 +26,6 @@ public  class AnimatedThings {
         this.frame_offset = 0;
         this.index = index;
         this.max_index = 6;
-        this.window_size = new int[]{800, 600};
         this.animation = new ImageView(new Image(fileName));
 
     }
@@ -35,6 +33,7 @@ public  class AnimatedThings {
     public ImageView getAnimation() {
         return animation;
     }
+
 
 }
 

@@ -4,21 +4,19 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 
 
 public class GameScene extends Scene {
     public static StaticThing[] lives;
     public int numberOfLives;
-
     public static Hero hero;
     public static Group background;
-
     public static Camera cam;
     public static Label timerLabel;
     public AnimationTimer timer;
     public AnimationTimer timer_background;
     private Parent root;
-
     public static MusicPlayer musicPlayer;
 
     public GameScene(Parent parent,double b_l_X,double b_l_Y,double b_r_X,double b_r_Y){
@@ -79,8 +77,11 @@ public class GameScene extends Scene {
             hero.fire();
         });
         this.setOnKeyPressed( (event)->{
-            System.out.println("Jump");
-            hero.jump();
+            if (event.getCode() == KeyCode.SPACE) {
+                System.out.println("Jump");
+                hero.jump();
+                event.consume();
+            }
         });
         timer.start();
         timer_background.start();

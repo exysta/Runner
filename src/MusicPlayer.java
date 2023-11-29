@@ -21,15 +21,20 @@ public class MusicPlayer {
     private void initializeControls() {
 
         playButton = new Button("Play");
+        playButton.setFocusTraversable(false); // this line allow the space bar to be handled by the game and not just press the button
+
         playButton.setOnAction(e -> {
             mediaPlayer.play();
             mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
         });
 
         pauseButton = new Button("Pause");
+        pauseButton.setFocusTraversable(false);
+
         pauseButton.setOnAction(e -> mediaPlayer.pause());
 
         stopButton = new Button("Stop");
+        stopButton.setFocusTraversable(false);
         stopButton.setOnAction(e -> {
             mediaPlayer.stop();
             mediaPlayer.setOnEndOfMedia(null); // Remove the loop when stopped
