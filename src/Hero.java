@@ -28,28 +28,16 @@ public class Hero extends AnimatedThings {
                     attitude =0;
                 }
                 this.animation.setViewport(new Rectangle2D( index * 83,attitude*160,80,100));
-                /*if(x_animation>=1600){
-                    //x_animation=0;
-                }
-                else {
-                    //x_animation += 15;
-                }
-                this.animation.setX(x_animation);*/
-
             }
         }
         if ((this.attitude%2== 1)){
             if (this.index < 1) {
                 this.index += 1;
                 this.animation.setViewport(new Rectangle2D( index * 85,attitude*160,80,100));
-                //this.animation.setY(y_animation);
-
             }
             else{
                 this.index = 0;
                 this.animation.setViewport(new Rectangle2D( index * 85,attitude*160,80,100));
-                //this.animation.setY(y_animation);
-
             }
         }
     }

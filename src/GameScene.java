@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class GameScene extends Scene {
     public static StaticThing[] lives;
     public int numberOfLives;
     public static Hero hero;
-    public static Alien ennemy;
+    public static ArrayList<ImageView> enemiesList;
 
     public static Group background;
     public static Camera cam;
@@ -38,9 +39,7 @@ public class GameScene extends Scene {
         musicPlayer = new MusicPlayer("Ressources/sound/Mercury.wav");
         EnemySpawner spawner = new EnemySpawner(75);
         spawner.SpawnEnemy();
-        ennemy = spawner.alien;
-
-
+        enemiesList=spawner.SpawnAllEnemies();
 
         // 1er timer pour l'animation du héro trigger 0.1 sec
         timer = new AnimationTimer() {
@@ -120,7 +119,9 @@ public class GameScene extends Scene {
     public static void update(){
 
         background.setLayoutX(-cam.getXCam());
-        ennemy.getAnimation().setLayoutX(-cam.getXCam());
+        for(ImageView enemy : enemiesList){
+            enemy.setLayoutX(-cam.getXCam());
+        }
         //hero.y_animation += cam.YHero;
         hero.animation.setY(hero.y_animation);
     }
@@ -128,7 +129,9 @@ public class GameScene extends Scene {
     public static MusicPlayer getMusicPlayer() {
         return musicPlayer;
     }
-    public static Alien getEnnemy() {
-        return ennemy;
+
+
+    public static ArrayList<ImageView> getEnemiesList() {
+        return enemiesList;
     }
 }

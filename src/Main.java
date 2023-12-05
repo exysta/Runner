@@ -26,7 +26,7 @@ public void start(Stage primaryStage) throws Exception{
 
         Ui.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getTimerLabel());
         HeroGroup.getChildren().add(GameScene.getHero().getAnimation());
-        EnnemyGroup.getChildren().add(GameScene.getEnnemy().getAnimation());
+        EnnemyGroup.getChildren().addAll(GameScene.getEnemiesList());
         Media.getChildren().addAll(GameScene.getMusicPlayer().getPlayButton(),GameScene.getMusicPlayer().getPauseButton(),GameScene.getMusicPlayer().getStopButton());
         landscape.getChildren().add(GameScene.getBackground());
 
