@@ -59,8 +59,6 @@ public class Hero extends AnimatedThings {
         update();
         y_animation += -150;
         animation.setY(y_animation);
-
-
     }
     public void fire(){
         if(y_animation>=485) { // du moment que le héros n'est que légerement au dessus du sol il fait l'animation du tire normal

@@ -15,15 +15,18 @@ public void start(Stage primaryStage) throws Exception{
 
         Group landscape = new Group();
         Group HeroGroup = new Group();
+        Group EnnemyGroup = new Group();
+
         Group Ui = new Group();
         HBox Media = new HBox();
         Media.setLayoutX(1475);
 
-        Pane pane = new Pane(landscape,Ui,HeroGroup,Media);
+        Pane pane = new Pane(landscape,Ui,HeroGroup,Media,EnnemyGroup);
         GameScene theScene = new GameScene(pane,40,40,1400,0);
 
         Ui.getChildren().addAll(GameScene.getLives()[0].getImage(),GameScene.getLives()[1].getImage(),GameScene.getLives()[2].getImage(),GameScene.getTimerLabel());
         HeroGroup.getChildren().add(GameScene.getHero().getAnimation());
+        EnnemyGroup.getChildren().add(GameScene.getEnnemy().getAnimation());
         Media.getChildren().addAll(GameScene.getMusicPlayer().getPlayButton(),GameScene.getMusicPlayer().getPauseButton(),GameScene.getMusicPlayer().getStopButton());
         landscape.getChildren().add(GameScene.getBackground());
 

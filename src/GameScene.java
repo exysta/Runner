@@ -6,11 +6,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 
+import java.util.ArrayList;
+
 
 public class GameScene extends Scene {
     public static StaticThing[] lives;
     public int numberOfLives;
     public static Hero hero;
+    public static Alien ennemy;
+
     public static Group background;
     public static Camera cam;
     public static Label timerLabel;
@@ -19,7 +23,9 @@ public class GameScene extends Scene {
     private Parent root;
     public static MusicPlayer musicPlayer;
 
-    public GameScene(Parent parent,double b_l_X,double b_l_Y,double b_r_X,double b_r_Y){
+
+
+    public GameScene(Parent parent, double b_l_X, double b_l_Y, double b_r_X, double b_r_Y){
         super(parent,1600, 600, true);
         lives = new StaticThing[] {new StaticThing("Ressources/heart.png",b_l_X,b_l_Y),new StaticThing("Ressources/heart.png",b_l_X+30,b_l_Y),new StaticThing("Ressources/heart.png",b_l_X+60,b_l_Y)};
         hero = new Hero(400,490,2,0);
@@ -28,9 +34,12 @@ public class GameScene extends Scene {
         root = getRoot();
         this.numberOfLives=3;
         timerLabel = new Label("Timer: 0");
-        timerLabel.setStyle("-fx-font-size: 32pt; -fx-text-fill: red;");
-
+        timerLabel.setStyle("-fx-font-size: 28pt; -fx-text-fill: red;");
         musicPlayer = new MusicPlayer("Ressources/sound/Mercury.wav");
+        EnemySpawner spawner = new EnemySpawner(75);
+        spawner.SpawnEnemy();
+        ennemy = spawner.alien;
+
 
 
         // 1er timer pour l'animation du héro trigger 0.1 sec
@@ -111,11 +120,15 @@ public class GameScene extends Scene {
     public static void update(){
 
         background.setLayoutX(-cam.getXCam());
+        ennemy.getAnimation().setLayoutX(-cam.getXCam());
         //hero.y_animation += cam.YHero;
         hero.animation.setY(hero.y_animation);
     }
 
     public static MusicPlayer getMusicPlayer() {
         return musicPlayer;
+    }
+    public static Alien getEnnemy() {
+        return ennemy;
     }
 }
