@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EnemySpawner {
-    private double screenWidth;
-    private double screenHeight;
-    private double enemyHitbox;
-    public ArrayList<Alien> aliensList;
+    private final double screenWidth;
+    private final double screenHeight;
+    private final double enemyHitbox;
 
     private Random random = new Random();
 
@@ -15,7 +14,6 @@ public class EnemySpawner {
         this.screenWidth = 1600*50;//1600= fenetre affiché,50= nombre de background défilant
         this.screenHeight = 600;
         this.enemyHitbox = enemyHitbox;
-        this.aliensList = new ArrayList<Alien>();
     }
 
     public double generateRandomX() {
@@ -34,16 +32,13 @@ public class EnemySpawner {
         return new Alien(alienX,alienY,alienAttitude,alienIndex);
     }
     public ArrayList<ImageView> SpawnAllEnemies(){
-        ArrayList<ImageView> ImageAlienList = new ArrayList<ImageView>();
+        ArrayList<ImageView> ImageAlienList = new ArrayList<>();
         for(int i=0;i<149;i++){
             SpawnEnemy();
-            //aliensList.add(SpawnEnemy());
             ImageAlienList.add(SpawnEnemy().getAnimation());
         }
         return ImageAlienList;
     }
 
-    public ArrayList<Alien> getAliensList() {
-        return aliensList;
-    }
+
 }

@@ -4,7 +4,6 @@ public class Camera {
 
     public double XHero;
     public double YHero;
-    double vY = 0; // camera velocity
 
 
 
@@ -15,9 +14,6 @@ public class Camera {
         this.YHero = YHero;
     }
 
-    public double getXHero() {
-        return XHero;
-    }
 
     public double getXCam() {
         return XCam;

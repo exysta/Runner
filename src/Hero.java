@@ -1,8 +1,5 @@
 import javafx.geometry.Rectangle2D;
-import javafx.scene.image.ImageView;
 
-import java.time.Duration;
-import java.util.ArrayList;
 
 public class Hero extends AnimatedThings {
     double vY = 0;
@@ -27,7 +24,7 @@ public class Hero extends AnimatedThings {
                 if (attitude==2){ // s'il a fini de tiré on le remet à courir normalement
                     attitude =0;
                 }
-                this.animation.setViewport(new Rectangle2D( index * 83,attitude*160,80,100));
+                this.animation.setViewport(new Rectangle2D( index,attitude*160,80,100));
             }
         }
         if ((this.attitude%2== 1)){
@@ -37,7 +34,7 @@ public class Hero extends AnimatedThings {
             }
             else{
                 this.index = 0;
-                this.animation.setViewport(new Rectangle2D( index * 85,attitude*160,80,100));
+                this.animation.setViewport(new Rectangle2D( index,attitude*160,80,100));
             }
         }
     }
@@ -45,7 +42,7 @@ public class Hero extends AnimatedThings {
         attitude = 1;
         index = 0;
         update();
-        vY += -3;
+        vY -= 3;
     }
     public void fire(){
         if(y_animation>=485) { // du moment que le héros n'est que légerement au dessus du sol il fait l'animation du tire normal

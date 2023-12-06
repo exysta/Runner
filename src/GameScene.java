@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 
@@ -16,7 +15,6 @@ public class GameScene extends Scene {
     public static int numberOfLives;
     public static Hero hero;
     public static ArrayList<ImageView> ImageEnemiesList;
-    public static ArrayList<Alien> EnemiesList;
 
 
     public static Group background;
@@ -24,7 +22,6 @@ public class GameScene extends Scene {
     public static Label timerLabel;
     public AnimationTimer timer;
     public AnimationTimer timer_background;
-    private Parent root;
     public static MusicPlayer musicPlayer;
 
 
@@ -35,7 +32,7 @@ public class GameScene extends Scene {
         hero = new Hero(400,490,2,0);
         background = Space.Create_Space();
         cam=new Camera(0,0, hero.x_animation, hero.y_animation);
-        this.numberOfLives=3;
+        numberOfLives=3;
         timerLabel = new Label("Timer: 0");
         timerLabel.setStyle("-fx-font-size: 28pt; -fx-text-fill: red;");
         musicPlayer = new MusicPlayer("Ressources/sound/Mercury.wav");
@@ -127,7 +124,7 @@ public class GameScene extends Scene {
             enemy.setLayoutX(-cam.getXCam());
             if(enemy.getBoundsInParent().intersects(hero.getAnimation().getBoundsInParent())){
                 LoseHP();
-            };
+            }
         }
         hero.animation.setY(hero.y_animation);
     }
