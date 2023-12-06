@@ -38,7 +38,6 @@ public class GameScene extends Scene {
         musicPlayer = new MusicPlayer("Ressources/sound/Mercury.wav");
         EnemySpawner spawner = new EnemySpawner(75);
         spawner.SpawnEnemy();
-        //EnemiesList=spawner.aliensList;
         ImageEnemiesList=spawner.SpawnAllEnemies();
 
         // 1er timer pour l'animation du héro trigger 0.1 sec
@@ -66,6 +65,8 @@ public class GameScene extends Scene {
         //2 eme timer qui va 10x plus vite pour un déplacement de l'arrière-plan plus fluide
         timer_background = new AnimationTimer() {
             private long previousTime_background;
+            private long InvicibilityFrame = 0;
+
             private long lastTime_background = 0;
             @Override
             public void handle(long now) {
@@ -122,7 +123,7 @@ public class GameScene extends Scene {
         background.setLayoutX(-cam.getXCam());
         for(ImageView enemy : ImageEnemiesList){
             enemy.setLayoutX(-cam.getXCam());
-            if(enemy.getBoundsInParent().intersects(hero.getAnimation().getBoundsInParent())){
+            if((enemy.getBoundsInParent().intersects(hero.getAnimation().getBoundsInParent()))){
                 LoseHP();
             }
         }
@@ -146,12 +147,9 @@ public class GameScene extends Scene {
                 break;
         }
     }
-
     public static MusicPlayer getMusicPlayer() {
         return musicPlayer;
     }
-
-
     public static ArrayList<ImageView> getImageEnemiesList() {
         return ImageEnemiesList;
     }
