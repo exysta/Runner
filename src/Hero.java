@@ -45,8 +45,7 @@ public class Hero extends AnimatedThings {
         attitude = 1;
         index = 0;
         update();
-        y_animation += -150;
-        animation.setY(y_animation);
+        vY += -3;
     }
     public void fire(){
         if(y_animation>=485) { // du moment que le héros n'est que légerement au dessus du sol il fait l'animation du tire normal
@@ -61,7 +60,13 @@ public class Hero extends AnimatedThings {
     }
     public void GravityUpdate(double deltatime){
         //adding gravity
-        double aY = 0.075;
+        double aY;
+        if((vY>=0)&&(y_animation>=400)){ // increased gravity when falling down near ground
+            aY=0.12;
+        }
+        else{
+            aY=0.07; // resotring to inital value if not descending near ground
+        }
 
         if((y_animation += vY * deltatime) > 490) {
             y_animation=490;
@@ -74,6 +79,7 @@ public class Hero extends AnimatedThings {
             vY += aY * deltatime ;
             y_animation += vY * deltatime;
         }
+
     }
 
 }

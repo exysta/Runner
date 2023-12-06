@@ -1,6 +1,5 @@
 import javafx.geometry.Rectangle2D;
 
-import java.util.Random;
 
 public class Alien extends AnimatedThings {
     public Alien(double x_animation, double y_animation, int attitude, int index) {
@@ -10,7 +9,7 @@ public class Alien extends AnimatedThings {
         this.animation.setY(y_animation);
     }
 
-    public void update(Alien alien){
+    public void update(){
         if((this.attitude== 0)){ //alien vivant
             if (this.index < 3) {
                 this.index += 1;
@@ -18,7 +17,7 @@ public class Alien extends AnimatedThings {
             else{
                 this.index = 0;
             }
-            this.animation.setViewport(new Rectangle2D( 1+index * 30,10+attitude*50,80,100));
+            this.animation.setViewport(new Rectangle2D( index * 60,15+attitude*90,60,90));
 
         }
         if ((this.attitude== 1)){ //alien meurt
@@ -28,9 +27,9 @@ public class Alien extends AnimatedThings {
             }
             else{
                 this.index = 0;
-                this.animation.setViewport(new Rectangle2D( index * 85,attitude*160,80,100));
+                this.animation.setViewport(new Rectangle2D( index * 60,15+attitude*90,60,90));
             }
-            this.animation.setViewport(new Rectangle2D( index * 85,attitude*160,80,100));
+            this.animation.setViewport(new Rectangle2D( index * 60,15+attitude*90,60,90));
         }
     }
 }

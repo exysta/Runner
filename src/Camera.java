@@ -26,15 +26,8 @@ public class Camera {
     public String toString(){
         return this.XHero+","+this.XCam;
     }
-    /*public void update(long deltaTime){
-        final double k = 0.1;  // spring constant
-        final double m = 1.0;  // mass
-        final double f = 0.8;  // damping coefficient
-        double ax = (k / m) * (XHero - XCam) + (f / m) * vx;
-        vx = ax * deltaTime - vx;
-        XCam = vx * deltaTime - XCam;
-    }*/
+
     public void update(){
-        XCam+=5;
+        XCam+=10;
     }
 }

@@ -6,15 +6,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 
 
 public class GameScene extends Scene {
     public static StaticThing[] lives;
-    public int numberOfLives;
+    public static int numberOfLives;
     public static Hero hero;
-    public static ArrayList<ImageView> enemiesList;
+    public static ArrayList<ImageView> ImageEnemiesList;
+    public static ArrayList<Alien> EnemiesList;
+
 
     public static Group background;
     public static Camera cam;
@@ -26,20 +29,20 @@ public class GameScene extends Scene {
 
 
 
-    public GameScene(Parent parent, double b_l_X, double b_l_Y, double b_r_X, double b_r_Y){
+    public GameScene(Parent parent){
         super(parent,1600, 600, true);
-        lives = new StaticThing[] {new StaticThing("Ressources/heart.png",b_l_X,b_l_Y),new StaticThing("Ressources/heart.png",b_l_X+30,b_l_Y),new StaticThing("Ressources/heart.png",b_l_X+60,b_l_Y)};
+        lives = new StaticThing[] {new StaticThing("Ressources/heart.png",40,40),new StaticThing("Ressources/heart.png",40+30,40),new StaticThing("Ressources/heart.png",40+60,40)};
         hero = new Hero(400,490,2,0);
         background = Space.Create_Space();
         cam=new Camera(0,0, hero.x_animation, hero.y_animation);
-        root = getRoot();
         this.numberOfLives=3;
         timerLabel = new Label("Timer: 0");
         timerLabel.setStyle("-fx-font-size: 28pt; -fx-text-fill: red;");
         musicPlayer = new MusicPlayer("Ressources/sound/Mercury.wav");
         EnemySpawner spawner = new EnemySpawner(75);
         spawner.SpawnEnemy();
-        enemiesList=spawner.SpawnAllEnemies();
+        //EnemiesList=spawner.aliensList;
+        ImageEnemiesList=spawner.SpawnAllEnemies();
 
         // 1er timer pour l'animation du héro trigger 0.1 sec
         timer = new AnimationTimer() {
@@ -56,6 +59,7 @@ public class GameScene extends Scene {
                 long elapsedTime = now - lastTime;
                 if ((now-previousTime)/1_000_000_00 >=1){
                     hero.update();
+
                     previousTime = now;
                 }
                 long seconds = elapsedTime / 1_000_000_000;
@@ -119,11 +123,31 @@ public class GameScene extends Scene {
     public static void update(){
 
         background.setLayoutX(-cam.getXCam());
-        for(ImageView enemy : enemiesList){
+        for(ImageView enemy : ImageEnemiesList){
             enemy.setLayoutX(-cam.getXCam());
+            if(enemy.getBoundsInParent().intersects(hero.getAnimation().getBoundsInParent())){
+                LoseHP();
+            };
         }
-        //hero.y_animation += cam.YHero;
         hero.animation.setY(hero.y_animation);
+    }
+
+    public static void LoseHP(){
+        if(numberOfLives>=1) {
+            numberOfLives--;
+            System.out.println("Lost HP! current HP : " +numberOfLives);
+        }
+        switch (numberOfLives){
+            case 2:
+                lives[2].getImage().setVisible(false);
+                break;
+            case 1:
+                lives[1].getImage().setVisible(false);
+                break;
+            case 0:
+                lives[0].getImage().setVisible(false);
+                break;
+        }
     }
 
     public static MusicPlayer getMusicPlayer() {
@@ -131,7 +155,7 @@ public class GameScene extends Scene {
     }
 
 
-    public static ArrayList<ImageView> getEnemiesList() {
-        return enemiesList;
+    public static ArrayList<ImageView> getImageEnemiesList() {
+        return ImageEnemiesList;
     }
 }
